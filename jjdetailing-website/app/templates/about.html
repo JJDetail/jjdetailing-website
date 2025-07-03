@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+    <div class="container text-center">
+        <h1 style="color: white;">About J&J Detailing</h1>
+        <p style="color: rgba(255,255,255,0.9);">Your trusted partner in automotive care since 2015</p>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6">
+                <h2>Our Story</h2>
+                <p>J&J Detailing was founded by two passionate car enthusiasts, John and James, who believed that every vehicle deserves to look its absolute best. What started as a weekend hobby quickly grew into a full-service detailing business serving hundreds of satisfied customers.</p>
+                <p>Our commitment to excellence, attention to detail, and use of premium products has made us the go-to choice for car owners who demand the best for their vehicles.</p>
+                <p>Today, we're proud to offer a comprehensive range of detailing services, from basic washes to advanced paint correction and ceramic coating applications.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', path='images/about-us.jpg') }}" alt="J&J Detailing Team" class="img-fluid rounded" style="width: 100%; height: 400px; object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Mission & Values -->
+        <div class="row mt-5">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <i class="fas fa-bullseye service-icon"></i>
+                    <h3>Our Mission</h3>
+                    <p>To provide exceptional automotive detailing services that exceed customer expectations while maintaining the highest standards of quality and professionalism.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <i class="fas fa-eye service-icon"></i>
+                    <h3>Our Vision</h3>
+                    <p>To be the premier choice for car detailing services in our community, known for our expertise, reliability, and commitment to customer satisfaction.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <i class="fas fa-heart service-icon"></i>
+                    <h3>Our Values</h3>
+                    <p>Quality, integrity, innovation, and customer focus drive everything we do. We treat every vehicle as if it were our own.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Why Choose J&J Detailing?</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-check-circle text-success mr-3" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5>Certified Professionals</h5>
+                            <p>Our team consists of IDA-certified detailing professionals with years of experience.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-check-circle text-success mr-3" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5>Premium Products</h5>
+                            <p>We use only the highest quality, eco-friendly products from trusted brands.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-check-circle text-success mr-3" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5>Satisfaction Guarantee</h5>
+                            <p>We stand behind our work with a 100% satisfaction guarantee on all services.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="d-flex align-items-start">
+                        <i class="fas fa-check-circle text-success mr-3" style="font-size: 1.5rem;"></i>
+                        <div>
+                            <h5>Convenient Service</h5>
+                            <p>Mobile detailing available - we come to your home or office at no extra charge.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Section -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Meet Our Team</h2>
+            <div class="row">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', path='images/team-john.jpg') }}" alt="John - Co-Founder" style="width: 150px; height: 150px; border-radius: 50%; margin: 20px auto;">
+                        <h4>John Martinez</h4>
+                        <p class="text-muted">Co-Founder & Lead Detailer</p>
+                        <p>15+ years of experience in automotive detailing and paint correction.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', path='images/team-james.jpg') }}" alt="James - Co-Founder" style="width: 150px; height: 150px; border-radius: 50%; margin: 20px auto;">
+                        <h4>James Wilson</h4>
+                        <p class="text-muted">Co-Founder & Operations Manager</p>
+                        <p>Expert in ceramic coatings and customer service excellence.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', path='images/team-sarah.jpg') }}" alt="Sarah - Customer Service" style="width: 150px; height: 150px; border-radius: 50%; margin: 20px auto;">
+                        <h4>Sarah Thompson</h4>
+                        <p class="text-muted">Customer Service Manager</p>
+                        <p>Ensures every customer has an exceptional experience with J&J Detailing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center mt-5">
+            <h3>Ready to Experience the J&J Difference?</h3>
+            <p>Let us show you why we're the preferred choice for car detailing services.</p>
+            <a href="/booking" class="btn btn-primary">Book Your Detail Today</a>
+        </div>
+    </div>
+</section>
+
+<!-- Add Bootstrap Grid Support -->
+<style>
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.col-md-4, .col-md-6, .col-lg-6 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+@media (min-width: 768px) {
+    .col-md-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+}
+@media (min-width: 992px) {
+    .col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+}
+.align-items-center { align-items: center!important; }
+.d-flex { display: flex!important; }
+.align-items-start { align-items: flex-start!important; }
+.mr-3 { margin-right: 1rem!important; }
+.text-success { color: var(--success-color)!important; }
+.text-muted { color: #6c757d!important; }
+.img-fluid { max-width: 100%; height: auto; }
+.rounded { border-radius: 0.25rem!important; }
+</style>
+{% endblock %}

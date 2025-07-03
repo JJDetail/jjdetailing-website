@@ -1,0 +1,209 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Success Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="success-icon mb-4">
+                    <i class="fas fa-check-circle" style="font-size: 5rem; color: var(--success-color);"></i>
+                </div>
+                
+                <h1>Booking Confirmed!</h1>
+                <p class="lead">Thank you for choosing J&J Detailing, {{ booking.name }}!</p>
+                
+                <!-- Booking Details -->
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3>Your Booking Details</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="booking-details">
+                            <div class="detail-row">
+                                <strong>Booking Reference:</strong>
+                                <span>#JJD{{ booking.id|string|zfill(6) }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>Service:</strong>
+                                <span>{{ booking.service.name if booking.service else 'Service' }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>Vehicle:</strong>
+                                <span>{{ booking.vehicle_info }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>Preferred Date:</strong>
+                                <span>{{ booking.preferred_datetime.strftime('%B %d, %Y') }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>Preferred Time:</strong>
+                                <span>{{ booking.preferred_datetime.strftime('%I:%M %p') }}</span>
+                            </div>
+                            <div class="detail-row">
+                                <strong>Status:</strong>
+                                <span class="badge badge-warning">Pending Confirmation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Insights -->
+                {% if ai_insights %}
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h4>Based on Your Request</h4>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Analysis:</strong> {{ ai_insights.sentiment|title }} sentiment detected</p>
+                        {% if ai_insights.key_concerns %}
+                        <p><strong>Key Concerns:</strong> {{ ai_insights.key_concerns|join(', ') }}</p>
+                        {% endif %}
+                        <p><strong>Priority Level:</strong> {{ ai_insights.urgency|title }}</p>
+                        <p class="mb-0"><em>Our team will address your specific needs with {{ ai_insights.recommended_response_tone }} service.</em></p>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- What's Next -->
+                <div class="mt-5">
+                    <h3>What Happens Next?</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon">1</div>
+                            <div class="timeline-content">
+                                <h5>Confirmation</h5>
+                                <p>We'll contact you within 24 hours to confirm your appointment</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">2</div>
+                            <div class="timeline-content">
+                                <h5>Reminder</h5>
+                                <p>You'll receive a reminder 24 hours before your appointment</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">3</div>
+                            <div class="timeline-content">
+                                <h5>Service Day</h5>
+                                <p>Arrive at your scheduled time or we'll come to you</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Important Information -->
+                <div class="alert alert-info mt-4">
+                    <h5>Important Information</h5>
+                    <ul class="mb-0">
+                        <li>A confirmation email has been sent to {{ booking.email }}</li>
+                        <li>Please remove all personal items from your vehicle before service</li>
+                        <li>If you need to reschedule, please call us at (555) 123-4567</li>
+                    </ul>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="mt-4">
+                    <a href="/" class="btn btn-primary">Return to Home</a>
+                    <a href="/services" class="btn btn-secondary">View Other Services</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.booking-details {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.badge-warning {
+    color: #212529;
+    background-color: #ffc107;
+}
+
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline-item {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.timeline-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.timeline-content h5 {
+    margin-bottom: 0.5rem;
+}
+
+.timeline-content p {
+    margin: 0;
+    color: var(--text-light);
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.alert h5 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.alert ul {
+    margin-bottom: 0;
+}
+</style>
+{% endblock %}

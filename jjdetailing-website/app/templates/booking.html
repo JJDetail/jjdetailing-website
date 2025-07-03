@@ -1,0 +1,315 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+    <div class="container text-center">
+        <h1 style="color: white;">Book Your Detail</h1>
+        <p style="color: rgba(255,255,255,0.9);">Schedule your appointment in just a few clicks</p>
+    </div>
+</section>
+
+<!-- Booking Form -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Booking Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/booking" id="booking-form">
+                            <!-- Personal Information -->
+                            <h4 class="mb-3">Personal Information</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Full Name *</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required>
+                            </div>
+                            
+                            <!-- Vehicle Information -->
+                            <h4 class="mb-3 mt-4">Vehicle Information</h4>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="vehicle_year">Year *</label>
+                                        <input type="text" class="form-control" id="vehicle_year" name="vehicle_year" placeholder="2024" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="vehicle_make">Make *</label>
+                                        <input type="text" class="form-control" id="vehicle_make" name="vehicle_make" placeholder="Toyota" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="vehicle_model">Model *</label>
+                                        <input type="text" class="form-control" id="vehicle_model" name="vehicle_model" placeholder="Camry" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- AI Recommendations -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="vehicle-type">Vehicle Type</label>
+                                        <select class="form-control" id="vehicle-type">
+                                            <option value="">Select type...</option>
+                                            <option value="sedan">Sedan</option>
+                                            <option value="suv">SUV</option>
+                                            <option value="truck">Truck</option>
+                                            <option value="van">Van</option>
+                                            <option value="sports">Sports Car</option>
+                                            <option value="luxury">Luxury Vehicle</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="vehicle-condition">Current Condition</label>
+                                        <select class="form-control" id="vehicle-condition">
+                                            <option value="">Select condition...</option>
+                                            <option value="excellent">Excellent - Just needs maintenance</option>
+                                            <option value="good">Good - Minor cleaning needed</option>
+                                            <option value="fair">Fair - Moderate dirt/stains</option>
+                                            <option value="poor">Poor - Heavy cleaning required</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div id="service-recommendations" class="mb-4" style="display: none;"></div>
+                            
+                            <!-- Service Selection -->
+                            <h4 class="mb-3 mt-4">Select Service</h4>
+                            <div class="form-group">
+                                <label for="service_id">Service Package *</label>
+                                <select class="form-control" id="service_id" name="service_id" required>
+                                    <option value="">Choose a service...</option>
+                                    {% for service in services %}
+                                    <option value="{{ service.id }}" {% if request.args.get('service') == service.id|string %}selected{% endif %}>
+                                        {{ service.name }} - ${{ "%.2f"|format(service.price) }} ({{ service.duration_minutes // 60 }} hours)
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            
+                            <!-- Scheduling -->
+                            <h4 class="mb-3 mt-4">Schedule Appointment</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="preferred_date">Preferred Date *</label>
+                                        <input type="date" class="form-control" id="preferred_date" name="preferred_date" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="preferred_time">Preferred Time *</label>
+                                        <input type="time" class="form-control" id="preferred_time" name="preferred_time" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Additional Notes -->
+                            <div class="form-group">
+                                <label for="notes">Additional Notes</label>
+                                <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Any specific concerns or requests?"></textarea>
+                            </div>
+                            
+                            <!-- Service Location -->
+                            <h4 class="mb-3 mt-4">Service Location</h4>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="service_location" id="location_shop" value="shop" checked>
+                                <label class="form-check-label" for="location_shop">
+                                    Drop off at our shop
+                                </label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="service_location" id="location_mobile" value="mobile">
+                                <label class="form-check-label" for="location_mobile">
+                                    Mobile service at my location
+                                </label>
+                            </div>
+                            
+                            <div id="mobile-address" style="display: none;">
+                                <div class="form-group">
+                                    <label for="service_address">Service Address</label>
+                                    <input type="text" class="form-control" id="service_address" name="service_address" placeholder="123 Main St, City, State 12345">
+                                </div>
+                            </div>
+                            
+                            <!-- Terms -->
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="terms" required>
+                                <label class="form-check-label" for="terms">
+                                    I agree to the <a href="/legal" target="_blank">terms of service</a> and understand the cancellation policy
+                                </label>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary btn-lg">Book Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Booking Summary -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Booking Summary</h4>
+                    </div>
+                    <div class="card-body">
+                        <div id="booking-summary">
+                            <p class="text-muted">Select a service to see details</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tips -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Booking Tips</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul class="mb-0">
+                            <li>Book 2-3 days in advance for best availability</li>
+                            <li>Morning appointments typically have shorter wait times</li>
+                            <li>Remove personal items from your vehicle before service</li>
+                            <li>Let us know about any specific problem areas</li>
+                            <li>Mobile service requires access to water and electricity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.form-check-input {
+    position: absolute;
+    margin-top: 0.3rem;
+    margin-left: -1.25rem;
+}
+.form-check {
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+.form-check-label {
+    margin-bottom: 0;
+}
+.recommendation-card {
+    background: var(--light-bg);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+.recommendation-card h4 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+.rec-details {
+    display: flex;
+    gap: 1rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+.rec-details .price {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.benefits li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.25rem;
+}
+.benefits li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--success-color);
+    font-weight: bold;
+}
+</style>
+
+{% block extra_js %}
+<script>
+// Service location toggle
+document.querySelectorAll('input[name="service_location"]').forEach(radio => {
+    radio.addEventListener('change', function() {
+        const mobileAddress = document.getElementById('mobile-address');
+        if (this.value === 'mobile') {
+            mobileAddress.style.display = 'block';
+            document.getElementById('service_address').required = true;
+        } else {
+            mobileAddress.style.display = 'none';
+            document.getElementById('service_address').required = false;
+        }
+    });
+});
+
+// Service summary update
+const serviceSelect = document.getElementById('service_id');
+const summaryDiv = document.getElementById('booking-summary');
+const servicesData = '{{ services | tojson | safe }}';
+const services = JSON.parse(servicesData);
+
+serviceSelect.addEventListener('change', function() {
+    const selectedService = services.find(s => s.id == this.value);
+    if (selectedService) {
+        summaryDiv.innerHTML = `
+            <h5>${selectedService.name}</h5>
+            <p>${selectedService.description}</p>
+            <hr>
+            <p><strong>Price:</strong> $${selectedService.price.toFixed(2)}</p>
+            <p><strong>Duration:</strong> ${Math.floor(selectedService.duration_minutes / 60)} hours</p>
+        `;
+    } else {
+        summaryDiv.innerHTML = '<p class="text-muted">Select a service to see details</p>';
+    }
+});
+</script>
+{% endblock %}
+{% endblock %}

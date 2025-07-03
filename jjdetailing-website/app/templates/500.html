@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- 500 Error Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="error-icon mb-4">
+                    <i class="fas fa-server" style="font-size: 5rem; color: var(--accent-color);"></i>
+                </div>
+                
+                <h1 style="font-size: 6rem; font-weight: 700; color: var(--primary-color);">500</h1>
+                <h2>Internal Server Error</h2>
+                <p class="lead">We're experiencing technical difficulties. Our team has been notified and is working on it.</p>
+                
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h4>What Happened?</h4>
+                        <p>Something went wrong on our end. This is not your fault - it's a temporary issue with our server.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <h4>What You Can Do:</h4>
+                    <div class="options">
+                        <div class="option">
+                            <i class="fas fa-redo fa-2x mb-2"></i>
+                            <p>Wait a few minutes and refresh the page</p>
+                        </div>
+                        <div class="option">
+                            <i class="fas fa-home fa-2x mb-2"></i>
+                            <p>Go back to our homepage</p>
+                        </div>
+                        <div class="option">
+                            <i class="fas fa-phone fa-2x mb-2"></i>
+                            <p>Call us at (555) 123-4567</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="/" class="btn btn-primary btn-lg">
+                        <i class="fas fa-home"></i> Go to Homepage
+                    </a>
+                </div>
+                
+                <div class="mt-5">
+                    <p class="text-muted">
+                        Error Reference: #{{ request.headers.get('X-Request-ID', 'JJD500') }}<br>
+                        <small>Please mention this reference if you contact support</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.option {
+    text-align: center;
+}
+
+.option i {
+    color: var(--secondary-color);
+}
+
+.option p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.fa-2x {
+    font-size: 2em;
+}
+</style>
+{% endblock %}

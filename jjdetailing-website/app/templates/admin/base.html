@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ title }}{% endblock %} - J&J Detailing Admin</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <nav class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3>J&J Admin</h3>
+                <p>Welcome, {{ user }}</p>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="/admin/dashboard" class="{% if request.url.path == '/admin/dashboard' %}active{% endif %}">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/bookings" class="{% if '/bookings' in request.url.path %}active{% endif %}">
+                        <i class="fas fa-calendar-check"></i> Bookings
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/services" class="{% if '/services' in request.url.path %}active{% endif %}">
+                        <i class="fas fa-car"></i> Services
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/contacts" class="{% if '/contacts' in request.url.path %}active{% endif %}">
+                        <i class="fas fa-envelope"></i> Messages
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/reviews" class="{% if '/reviews' in request.url.path %}active{% endif %}">
+                        <i class="fas fa-star"></i> Reviews
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/analytics" class="{% if '/analytics' in request.url.path %}active{% endif %}">
+                        <i class="fas fa-chart-line"></i> Analytics
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/settings" class="{% if '/settings' in request.url.path %}active{% endif %}">
+                        <i class="fas fa-cog"></i> Settings
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="sidebar-footer">
+                <a href="/" class="btn btn-sm btn-secondary">
+                    <i class="fas fa-globe"></i> View Site
+                </a>
+                <a href="/admin/logout" class="btn btn-sm btn-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </a>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>{% block page_title %}{{ title }}{% endblock %}</h1>
+                <div class="header-actions">
+                    {% block header_actions %}{% endblock %}
+                </div>
+            </div>
+            
+            <div class="admin-content">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+    
+    <style>
+    .admin-wrapper {
+        display: flex;
+        min-height: 100vh;
+        background-color: var(--light-bg);
+    }
+    
+    .admin-sidebar {
+        width: 250px;
+        background-color: var(--primary-color);
+        color: white;
+        position: fixed;
+        height: 100vh;
+        overflow-y: auto;
+        z-index: 100;
+    }
+    
+    .sidebar-header {
+        padding: 1.5rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .sidebar-header h3 {
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+    
+    .sidebar-header p {
+        color: rgba(255,255,255,0.7);
+        margin: 0;
+        font-size: 0.9rem;
+    }
+    
+    .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .sidebar-menu a {
+        display: flex;
+        align-items: center;
+        padding: 1rem 1.5rem;
+        color: rgba(255,255,255,0.8);
+        transition: all 0.3s;
+    }
+    
+    .sidebar-menu a:hover,
+    .sidebar-menu a.active {
+        background-color: rgba(255,255,255,0.1);
+        color: white;
+    }
+    
+    .sidebar-menu i {
+        width: 20px;
+        margin-right: 0.75rem;
+    }
+    
+    .sidebar-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 1rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .admin-main {
+        flex: 1;
+        margin-left: 250px;
+        min-height: 100vh;
+    }
+    
+    .admin-header {
+        background: white;
+        padding: 1.5rem 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .admin-header h1 {
+        margin: 0;
+        font-size: 1.75rem;
+    }
+    
+    .admin-content {
+        padding: 2rem;
+    }
+    
+    .btn-danger {
+        background-color: var(--accent-color);
+        color: white;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c0392b;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+        .admin-sidebar {
+            transform: translateX(-100%);
+        }
+        
+        .admin-main {
+            margin-left: 0;
+        }
+    }
+    
+    /* Admin specific utilities */
+    .stat-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin: 0.5rem 0;
+    }
+    
+    .stat-label {
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+    
+    .data-table {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .data-table table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .data-table th {
+        background-color: var(--light-bg);
+        font-weight: 600;
+    }
+    
+    .data-table tr:hover {
+        background-color: var(--light-bg);
+    }
+    
+    .status-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    
+    .status-pending {
+        background-color: #fff3cd;
+        color: #856404;
+    }
+    
+    .status-confirmed {
+        background-color: #cfe2ff;
+        color: #084298;
+    }
+    
+    .status-completed {
+        background-color: #d1e7dd;
+        color: #0f5132;
+    }
+    
+    .status-cancelled {
+        background-color: #f8d7da;
+        color: #842029;
+    }
+    </style>
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', path='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

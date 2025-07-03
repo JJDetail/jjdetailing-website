@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Error Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="error-icon mb-4">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--accent-color);"></i>
+                </div>
+                
+                <h1>Oops! Something Went Wrong</h1>
+                <p class="lead">{{ error or "We encountered an error while processing your request." }}</p>
+                
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h4>What Can You Do?</h4>
+                        <ul class="text-left">
+                            <li>Try refreshing the page</li>
+                            <li>Check your internet connection</li>
+                            <li>Go back and try again</li>
+                            <li>Contact us if the problem persists</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <a href="javascript:history.back()" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Go Back
+                    </a>
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-home"></i> Home Page
+                    </a>
+                </div>
+                
+                <div class="mt-5">
+                    <p class="text-muted">Need help? Call us at (555) 123-4567</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.error-icon {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+</style>
+{% endblock %}

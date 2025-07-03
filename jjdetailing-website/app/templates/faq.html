@@ -1,0 +1,243 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+    <div class="container text-center">
+        <h1 style="color: white;">Frequently Asked Questions</h1>
+        <p style="color: rgba(255,255,255,0.9);">Find answers to common questions about our services</p>
+    </div>
+</section>
+
+<!-- FAQ Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <!-- Services FAQs -->
+                <h2 class="mb-4">Services</h2>
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            What's the difference between your detail packages?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Express Detail ($59.99):</strong> Basic exterior wash, interior vacuum, tire shine, and window cleaning. Perfect for regular maintenance. Takes about 1 hour.</p>
+                        <p><strong>Standard Detail ($149.99):</strong> Includes everything in Express plus clay bar treatment, wax application, interior deep clean, and leather/fabric conditioning. Takes about 3 hours.</p>
+                        <p><strong>Premium Detail ($299.99):</strong> Our most comprehensive service including paint correction, ceramic coating application, engine bay cleaning, and complete interior restoration. Takes 6+ hours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            How long does each service take?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Service times vary based on vehicle size and condition:</p>
+                        <ul>
+                            <li>Express Detail: 45-60 minutes</li>
+                            <li>Standard Detail: 2-3 hours</li>
+                            <li>Premium Detail: 6-8 hours</li>
+                            <li>Paint Correction: 4-6 hours</li>
+                            <li>Ceramic Coating: 6-8 hours (may require overnight curing)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            Do you offer mobile detailing services?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Yes! We offer mobile detailing services within a 15-mile radius of our location. We bring all necessary equipment and supplies to your home or office. Additional travel fees may apply for locations beyond 15 miles.</p>
+                    </div>
+                </div>
+
+                <!-- Booking FAQs -->
+                <h2 class="mb-4 mt-5">Booking & Scheduling</h2>
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            How far in advance should I book?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>We recommend booking 2-3 days in advance, especially for weekend appointments. During peak seasons (spring and summer), booking a week ahead is advisable. Same-day service may be available for Express Details, subject to availability.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            What if I need to cancel or reschedule?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>We understand plans change. Please give us at least 24 hours notice for cancellations or rescheduling. Late cancellations or no-shows may be subject to a fee of 50% of the service price.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            What are your business hours?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>We're open:</p>
+                        <ul>
+                            <li>Monday - Friday: 8:00 AM - 6:00 PM</li>
+                            <li>Saturday: 9:00 AM - 5:00 PM</li>
+                            <li>Sunday: Closed</li>
+                        </ul>
+                        <p>Mobile service appointments may be available outside regular hours by special arrangement.</p>
+                    </div>
+                </div>
+
+                <!-- Pricing FAQs -->
+                <h2 class="mb-4 mt-5">Pricing & Payment</h2>
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            What payment methods do you accept?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>We accept multiple payment methods for your convenience:</p>
+                        <ul>
+                            <li>Cash</li>
+                            <li>Credit/Debit Cards (Visa, Mastercard, American Express, Discover)</li>
+                            <li>Digital payments (Venmo, Zelle, Apple Pay, Google Pay)</li>
+                            <li>Personal checks (with valid ID)</li>
+                        </ul>
+                        <p>Payment is due upon completion of service.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            Do you offer any discounts or packages?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Yes! We offer several ways to save:</p>
+                        <ul>
+                            <li>First-time customer: 15% off any service</li>
+                            <li>Monthly maintenance plans: Save 20% with regular service</li>
+                            <li>Multi-vehicle discount: 10% off when detailing 2+ vehicles</li>
+                            <li>Referral program: Get $25 off your next service for each referral</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- General FAQs -->
+                <h2 class="mb-4 mt-5">General Questions</h2>
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            What should I do to prepare for my appointment?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>To ensure the best results:</p>
+                        <ul>
+                            <li>Remove all personal items from the vehicle</li>
+                            <li>Ensure we have access to water and electricity (for mobile service)</li>
+                            <li>Let us know about any specific concerns or problem areas</li>
+                            <li>Have at least 1/4 tank of gas (for moving the vehicle if needed)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            Are your products safe for my vehicle?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Absolutely! We use only professional-grade, pH-balanced products that are safe for all vehicle surfaces. Our products are eco-friendly, biodegradable, and won't damage your vehicle's paint, interior materials, or protective coatings.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item card mb-3">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-question-circle text-primary mr-2"></i>
+                            Do you offer any warranties or guarantees?
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Yes! We stand behind our work:</p>
+                        <ul>
+                            <li>100% satisfaction guarantee on all services</li>
+                            <li>Ceramic coatings come with a 2-year warranty</li>
+                            <li>Paint correction results guaranteed for 6 months</li>
+                            <li>If you're not happy, we'll make it right at no additional cost</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Still have questions? -->
+                <div class="text-center mt-5">
+                    <h3>Still Have Questions?</h3>
+                    <p>We're here to help! Contact us for personalized assistance.</p>
+                    <a href="/contact" class="btn btn-primary">Contact Us</a>
+                    <a href="tel:5551234567" class="btn btn-secondary">Call (555) 123-4567</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.faq-item .card-header {
+    background-color: var(--light-bg);
+    border-bottom: 2px solid var(--border-color);
+}
+.faq-item .card-header h5 {
+    color: var(--primary-color);
+    cursor: pointer;
+}
+.col-lg-8 {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+@media (min-width: 992px) {
+    .col-lg-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+}
+.mx-auto {
+    margin-right: auto!important;
+    margin-left: auto!important;
+}
+.mr-2 {
+    margin-right: 0.5rem!important;
+}
+.text-primary {
+    color: var(--secondary-color)!important;
+}
+</style>
+{% endblock %}
