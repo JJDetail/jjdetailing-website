@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+    <div class="container text-center">
+        <h1 style="color: white;">Our Services</h1>
+        <p style="color: rgba(255,255,255,0.9);">Professional car detailing services tailored to your needs</p>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5">
+    <div class="container">
+        <!-- Service Categories -->
+        <div class="text-center mb-5">
+            <h2>Choose Your Service Package</h2>
+            <p>All services include our satisfaction guarantee</p>
+        </div>
+        
+        <!-- Main Service Packages -->
+        <div class="services-grid mb-5">
+            {% for service in services %}
+            {% if service.name in ['Express Detail', 'Standard Detail', 'Premium Detail'] %}
+            <div class="service-card card">
+                <div class="card-header text-center">
+                    {% if 'Express' in service.name %}
+                    <i class="fas fa-car service-icon"></i>
+                    {% elif 'Standard' in service.name %}
+                    <i class="fas fa-sparkles service-icon"></i>
+                    {% else %}
+                    <i class="fas fa-gem service-icon"></i>
+                    {% endif %}
+                    <h3>{{ service.name }}</h3>
+                </div>
+                <div class="card-body">
+                    <p>{{ service.description }}</p>
+                    <div class="service-details">
+                        <p class="service-price">${{ "%.2f"|format(service.price) }}</p>
+                        <p class="text-muted"><i class="fas fa-clock"></i> {{ service.duration_minutes // 60 }} hours</p>
+                    </div>
+                    <a href="/booking?service={{ service.id }}" class="btn btn-primary btn-block">Book Now</a>
+                </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        
+        <!-- Specialty Services -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Specialty Services</h2>
+            <div class="services-grid">
+                {% for service in services %}
+                {% if service.name not in ['Express Detail', 'Standard Detail', 'Premium Detail'] %}
+                <div class="service-card card">
+                    <div class="card-header text-center">
+                        {% if 'Paint' in service.name %}
+                        <i class="fas fa-paint-brush service-icon"></i>
+                        {% elif 'Ceramic' in service.name %}
+                        <i class="fas fa-shield-alt service-icon"></i>
+                        {% elif 'Interior' in service.name %}
+                        <i class="fas fa-couch service-icon"></i>
+                        {% else %}
+                        <i class="fas fa-star service-icon"></i>
+                        {% endif %}
+                        <h4>{{ service.name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ service.description }}</p>
+                        <div class="service-details">
+                            <p class="service-price">${{ "%.2f"|format(service.price) }}</p>
+                            <p class="text-muted"><i class="fas fa-clock"></i> {{ service.duration_minutes // 60 }} hours</p>
+                        </div>
+                        <a href="/booking?service={{ service.id }}" class="btn btn-primary btn-block">Book Now</a>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Service Comparison Table -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Service Comparison</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Service Features</th>
+                            <th class="text-center">Express</th>
+                            <th class="text-center">Standard</th>
+                            <th class="text-center">Premium</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Exterior Hand Wash</td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Interior Vacuum</td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Window Cleaning</td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Tire Shine</td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Clay Bar Treatment</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Wax Application</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Interior Deep Clean</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Leather/Fabric Treatment</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Paint Correction</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Ceramic Coating</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Engine Bay Cleaning</td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-times text-muted"></i></td>
+                            <td class="text-center"><i class="fas fa-check text-success"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Add-On Services -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Available Add-Ons</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5><i class="fas fa-wind text-primary"></i> Odor Removal - $49.99</h5>
+                            <p>Professional ozone treatment to eliminate stubborn odors</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5><i class="fas fa-lightbulb text-primary"></i> Headlight Restoration - $79.99</h5>
+                            <p>Restore clarity and brightness to foggy headlights</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5><i class="fas fa-dog text-primary"></i> Pet Hair Removal - $39.99</h5>
+                            <p>Specialized tools and techniques for stubborn pet hair</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5><i class="fas fa-tint text-primary"></i> Scratch Removal - $99.99+</h5>
+                            <p>Professional paint touch-up and scratch repair</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="text-center mt-5">
+            <h3>Not Sure Which Service You Need?</h3>
+            <p>Our experts can help you choose the perfect package for your vehicle</p>
+            <a href="/contact" class="btn btn-primary">Get Expert Advice</a>
+            <a href="/booking" class="btn btn-secondary">Book Now</a>
+        </div>
+    </div>
+</section>
+
+<style>
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.05);
+}
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.fa-times {
+    color: #dee2e6;
+}
+</style>
+{% endblock %}

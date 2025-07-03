@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - J&J Detailing Admin</title>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background-color: var(--light-bg);">
+    <div class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <i class="fas fa-user-shield fa-3x"></i>
+                <h2>Admin Login</h2>
+                <p>J&J Detailing Management System</p>
+            </div>
+            
+            {% if error %}
+            <div class="alert alert-error">
+                <i class="fas fa-exclamation-circle"></i> {{ error }}
+            </div>
+            {% endif %}
+            
+            <form method="POST" action="/admin/login">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required autofocus>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            
+            <div class="login-footer">
+                <a href="/" class="text-muted">← Back to Website</a>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+    .login-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    .login-box {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .login-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .login-header i {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .login-header h2 {
+        margin-bottom: 0.5rem;
+    }
+    
+    .login-header p {
+        color: var(--text-light);
+        margin: 0;
+    }
+    
+    .login-footer {
+        text-align: center;
+        margin-top: 2rem;
+    }
+    
+    .btn-block {
+        width: 100%;
+        display: block;
+    }
+    </style>
+</body>
+</html>

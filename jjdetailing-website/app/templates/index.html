@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>Premium Car Detailing Services</h1>
+        <p>Transform your vehicle with our professional detailing services</p>
+        <div class="hero-buttons">
+            <a href="/booking" class="btn btn-primary">Book Now</a>
+            <a href="/services" class="btn btn-secondary">View Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Choose J&J Detailing?</h2>
+        <div class="services-grid">
+            <div class="card text-center">
+                <i class="fas fa-award service-icon"></i>
+                <h3>Professional Service</h3>
+                <p>Certified technicians with years of experience in automotive detailing</p>
+            </div>
+            <div class="card text-center">
+                <i class="fas fa-shield-alt service-icon"></i>
+                <h3>Quality Products</h3>
+                <p>We use only premium, eco-friendly products that are safe for your vehicle</p>
+            </div>
+            <div class="card text-center">
+                <i class="fas fa-clock service-icon"></i>
+                <h3>Convenient Scheduling</h3>
+                <p>Book online 24/7 and choose a time that works best for you</p>
+            </div>
+            <div class="card text-center">
+                <i class="fas fa-mobile-alt service-icon"></i>
+                <h3>Mobile Service</h3>
+                <p>We come to you! Enjoy our detailing services at your home or office</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Popular Services -->
+<section class="py-5" style="background-color: var(--light-bg);">
+    <div class="container">
+        <h2 class="text-center mb-5">Our Popular Services</h2>
+        <div class="services-grid">
+            <div class="service-card card">
+                <i class="fas fa-car service-icon"></i>
+                <h4>Express Detail</h4>
+                <p>Quick exterior wash and interior vacuum</p>
+                <div class="service-price">$59.99</div>
+                <a href="/booking" class="btn btn-primary">Book Now</a>
+            </div>
+            <div class="service-card card">
+                <i class="fas fa-sparkles service-icon"></i>
+                <h4>Standard Detail</h4>
+                <p>Complete wash, wax, and interior deep clean</p>
+                <div class="service-price">$149.99</div>
+                <a href="/booking" class="btn btn-primary">Book Now</a>
+            </div>
+            <div class="service-card card">
+                <i class="fas fa-gem service-icon"></i>
+                <h4>Premium Detail</h4>
+                <p>Full paint correction and ceramic coating</p>
+                <div class="service-price">$299.99</div>
+                <a href="/booking" class="btn btn-primary">Book Now</a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/services" class="btn btn-secondary">View All Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-5">What Our Customers Say</h2>
+        <div class="services-grid">
+            <div class="review-card">
+                <div class="review-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Amazing service! My car looks brand new. The attention to detail is incredible."</p>
+                <p class="review-author">- Sarah Johnson</p>
+            </div>
+            <div class="review-card">
+                <div class="review-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"Professional, punctual, and perfect results. Highly recommend J&J Detailing!"</p>
+                <p class="review-author">- Michael Chen</p>
+            </div>
+            <div class="review-card">
+                <div class="review-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p>"The ceramic coating they applied is fantastic. My car still looks showroom new months later!"</p>
+                <p class="review-author">- Emily Rodriguez</p>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/reviews" class="btn btn-secondary">Read More Reviews</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+    <div class="container text-center">
+        <h2 style="color: white;">Ready to Give Your Car the Treatment It Deserves?</h2>
+        <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem;">Book your appointment today and experience the J&J Detailing difference</p>
+        <a href="/booking" class="btn btn-primary" style="background: white; color: var(--primary-color);">Schedule Your Detail</a>
+    </div>
+</section>
+
+<!-- Service Area -->
+<section class="py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Service Areas</h2>
+        <p class="text-center mb-4">We proudly serve the following areas with our mobile detailing services:</p>
+        <div class="text-center">
+            <p>Downtown • North Side • South Side • East End • West End • Suburbs</p>
+            <p class="mt-3"><em>Travel fees may apply for locations beyond 15 miles</em></p>
+        </div>
+    </div>
+</section>
+{% endblock %}

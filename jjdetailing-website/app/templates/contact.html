@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="py-5" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+    <div class="container text-center">
+        <h1 style="color: white;">Contact Us</h1>
+        <p style="color: rgba(255,255,255,0.9);">We're here to answer your questions</p>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Send Us a Message</h3>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="/contact" id="contact-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name">Your Name *</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <input type="text" class="form-control" id="subject" name="subject" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Information -->
+            <div class="col-lg-4">
+                <!-- Contact Details -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>Get In Touch</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <i class="fas fa-phone text-primary"></i>
+                            <strong>Phone:</strong><br>
+                            <a href="tel:5551234567">(555) 123-4567</a>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <i class="fas fa-envelope text-primary"></i>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:info@jjdetailing.com">info@jjdetailing.com</a>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                            <strong>Location:</strong><br>
+                            123 Main Street<br>
+                            City, State 12345
+                        </div>
+                        
+                        <div>
+                            <i class="fas fa-clock text-primary"></i>
+                            <strong>Business Hours:</strong><br>
+                            Monday - Friday: 8:00 AM - 6:00 PM<br>
+                            Saturday: 9:00 AM - 5:00 PM<br>
+                            Sunday: Closed
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Quick Actions</h4>
+                    </div>
+                    <div class="card-body">
+                        <a href="/booking" class="btn btn-primary btn-block mb-2">Book Now</a>
+                        <a href="/services" class="btn btn-secondary btn-block mb-2">View Services</a>
+                        <a href="/faq" class="btn btn-secondary btn-block">Read FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Map Section -->
+        <div class="mt-5">
+            <h3 class="text-center mb-4">Find Us</h3>
+            <div class="card">
+                <div class="card-body">
+                    <div id="map" style="height: 400px; background: #f0f0f0; display: flex; align-items: center; justify-content: center;">
+                        <div class="text-center">
+                            <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--primary-color);"></i>
+                            <p class="mt-3">Interactive map would be displayed here</p>
+                            <a href="https://maps.google.com/?q=123+Main+Street+City+State+12345" target="_blank" class="btn btn-primary">
+                                Get Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional Contact Options -->
+        <div class="mt-5">
+            <h3 class="text-center mb-4">Other Ways to Connect</h3>
+            <div class="row">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-comments fa-3x text-primary mb-3"></i>
+                            <h5>Live Chat</h5>
+                            <p>Chat with our team during business hours for immediate assistance</p>
+                            <button class="btn btn-primary" onclick="alert('Live chat feature coming soon!')">Start Chat</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-mobile-alt fa-3x text-primary mb-3"></i>
+                            <h5>Text Us</h5>
+                            <p>Send us a text message for quick questions or to check availability</p>
+                            <a href="sms:5551234567" class="btn btn-primary">Text Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <i class="fas fa-share-alt fa-3x text-primary mb-3"></i>
+                            <h5>Social Media</h5>
+                            <p>Follow us for updates, tips, and special offers</p>
+                            <div>
+                                <a href="#" class="btn btn-primary btn-sm mr-1"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="btn btn-primary btn-sm mr-1"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="btn btn-primary btn-sm"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+}
+.mr-1 {
+    margin-right: 0.25rem!important;
+}
+.fa-3x {
+    font-size: 3em;
+}
+</style>
+{% endblock %}
